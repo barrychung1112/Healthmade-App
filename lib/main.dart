@@ -1,4 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:keyboard_visibility/keyboard_visibility.dart';
+import 'pages/login2.dart';
+import './dummy_data.dart';
+import './screens/tabs_screen.dart';
+import './screens/meal_detail_screen.dart';
+import './screens/category_meals_screen.dart';
+import './screens/filters_screen.dart';
+import './screens/categories_screen.dart';
+import './models/meal.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,109 +19,457 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: "Nunito"
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          child: LoginPage(),
+        ),
+      ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
+class LoginPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _LoginPageState extends State<LoginPage> {
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  int _pageState = 0;
+
+  var _backgroundColor = Colors.white;
+  var _headingColor = Color(0xFFB40284A);
+
+  double _headingTop = 100;
+
+  double _loginWidth = 0;
+  double _loginHeight = 0;
+  double _loginOpacity = 1;
+
+  double _loginYOffset = 0;
+  double _loginXOffset = 0;
+  double _registerYOffset = 0;
+  double _registerHeight = 0;
+
+  double windowWidth = 0;
+  double windowHeight = 0;
+
+  bool _keyboardVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    KeyboardVisibilityNotification().addNewListener(
+      onChange: (bool visible) {
+        setState(() {
+          _keyboardVisible = visible;
+          print("Keyboard State Changed : $visible");
+        });
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+
+    windowHeight = MediaQuery.of(context).size.height;
+    windowWidth = MediaQuery.of(context).size.width;
+
+    _loginHeight = windowHeight - 270;
+    _registerHeight = windowHeight - 270;
+
+    switch(_pageState) {
+      case 0:
+        _backgroundColor = Colors.white;
+        _headingColor = Color(0xFFB40284A);
+
+        _headingTop = 100;
+
+        _loginWidth = windowWidth;
+        _loginOpacity = 1;
+
+        _loginYOffset = windowHeight;
+        _loginHeight = _keyboardVisible ? windowHeight : windowHeight - 270;
+
+        _loginXOffset = 0;
+        _registerYOffset = windowHeight;
+        break;
+      case 1:
+        _backgroundColor = Color(0xFFBD34C59);
+        _headingColor = Colors.white;
+
+        _headingTop = 90;
+
+        _loginWidth = windowWidth;
+        _loginOpacity = 1;
+
+        _loginYOffset = _keyboardVisible ? 40 : 270;
+        _loginHeight = _keyboardVisible ? windowHeight : windowHeight - 270;
+
+        _loginXOffset = 0;
+        _registerYOffset = windowHeight;
+        break;
+      case 2:
+        _backgroundColor = Color(0xFFBD34C59);
+        _headingColor = Colors.white;
+
+        _headingTop = 80;
+
+        _loginWidth = windowWidth - 40;
+        _loginOpacity = 0.7;
+
+        _loginYOffset = _keyboardVisible ? 30 : 240;
+        _loginHeight = _keyboardVisible ? windowHeight : windowHeight - 240;
+
+        _loginXOffset = 20;
+        _registerYOffset = _keyboardVisible ? 55 : 270;
+        _registerHeight = _keyboardVisible ? windowHeight : windowHeight - 270;
+        break;
+    }
+
+    return Stack(
+      children: <Widget>[
+        AnimatedContainer(
+            curve: Curves.fastLinearToSlowEaseIn,
+            duration: Duration(
+                milliseconds: 1000
+            ),
+            color: _backgroundColor,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _pageState = 0;
+                    });
+                  },
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        AnimatedContainer(
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: Duration(
+                              milliseconds: 1000
+                          ),
+                          margin: EdgeInsets.only(
+                            top: _headingTop,
+                          ),
+                          child: Text(
+                            "HealthMade健康食",
+                            style: TextStyle(
+                                color: _headingColor,
+                                fontSize: 28
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(20),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 32
+                          ),
+                          child: Text(
+                            "食在健康，健康食。",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: _headingColor,
+                                fontSize: 16
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 32
+                  ),
+                  child: Center(
+                    child: Image.asset("assets/images/animate.png"),
+                  ),
+                ),
+                Container(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        if(_pageState != 0){
+                          _pageState = 0;
+                        } else {
+                          _pageState = 1;
+                        }
+                      });
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(32),
+                      padding: EdgeInsets.all(20),
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Color(0xFFB40284A),
+                          borderRadius: BorderRadius.circular(50)
+                      ),
+                      child: Center(
+                        child: Text(
+                          '點擊進入健康旅程',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            )
+        ),
+        AnimatedContainer(
+          padding: EdgeInsets.all(32),
+          width: _loginWidth,
+          height: _loginHeight,
+          curve: Curves.fastLinearToSlowEaseIn,
+          duration: Duration(
+              milliseconds: 1000
+          ),
+          transform: Matrix4.translationValues(_loginXOffset, _loginYOffset, 1),
+          decoration: BoxDecoration(
+              color: Colors.white.withOpacity(_loginOpacity),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25)
+              )
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: Text(
+                      "繼續健康旅程...",
+                      style: TextStyle(
+                          fontSize: 20
+                      ),
+                    ),
+                  ),
+                  InputWithIcon(
+                    icon: Icons.email,
+                    hint: "輸入您的學號...",
+                  ),
+                  SizedBox(height: 20,),
+                  InputWithIcon(
+                    icon: Icons.vpn_key,
+                    hint: "輸入您的密碼...",
+                  )
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage2()));
+                    },
+                    child: PrimaryButton(
+                      btnText: "登入",
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _pageState = 2;
+                      });
+                    },
+                    child: OutlineBtn(
+                      btnText: "新增使用者",
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+        AnimatedContainer(
+          height: _registerHeight,
+          padding: EdgeInsets.all(32),
+          curve: Curves.fastLinearToSlowEaseIn,
+          duration: Duration(
+              milliseconds: 1000
+          ),
+          transform: Matrix4.translationValues(0, _registerYOffset, 1),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25)
+              )
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: Text(
+                      "新增帳戶",
+                      style: TextStyle(
+                          fontSize: 20
+                      ),
+                    ),
+                  ),
+                  InputWithIcon(
+                    icon: Icons.email,
+                    hint: "輸入學號",
+                  ),
+                  SizedBox(height: 20,),
+                  InputWithIcon(
+                    icon: Icons.vpn_key,
+                    hint: "輸入密碼",
+                  )
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  PrimaryButton(
+                    btnText: "新增帳戶",
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _pageState = 1;
+                      });
+                    },
+                    child: OutlineBtn(
+                      btnText: "回到前頁",
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class InputWithIcon extends StatefulWidget {
+  final IconData icon;
+  final String hint;
+  InputWithIcon({this.icon, this.hint});
+
+  @override
+  _InputWithIconState createState() => _InputWithIconState();
+}
+
+class _InputWithIconState extends State<InputWithIcon> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(
+              color: Color(0xFFBC7C7C7),
+              width: 2
+          ),
+          borderRadius: BorderRadius.circular(50)
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      child: Row(
+        children: <Widget>[
+          Container(
+              width: 60,
+              child: Icon(
+                widget.icon,
+                size: 20,
+                color: Color(0xFFBB9B9B9),
+              )
+          ),
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(vertical: 20),
+                  border: InputBorder.none,
+                  hintText: widget.hint
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
+class PrimaryButton extends StatefulWidget {
+  final String btnText;
+  PrimaryButton({this.btnText});
+
+  @override
+  _PrimaryButtonState createState() => _PrimaryButtonState();
+}
+
+class _PrimaryButtonState extends State<PrimaryButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Color(0xFFB40284A),
+          borderRadius: BorderRadius.circular(50)
+      ),
+      padding: EdgeInsets.all(20),
+      child: Center(
+        child: Text(
+          widget.btnText,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 16
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class OutlineBtn extends StatefulWidget {
+  final String btnText;
+  OutlineBtn({this.btnText});
+
+  @override
+  _OutlineBtnState createState() => _OutlineBtnState();
+}
+
+class _OutlineBtnState extends State<OutlineBtn> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(
+              color: Color(0xFFB40284A),
+              width: 2
+          ),
+          borderRadius: BorderRadius.circular(50)
+      ),
+      padding: EdgeInsets.all(20),
+      child: Center(
+        child: Text(
+          widget.btnText,
+          style: TextStyle(
+              color: Color(0xFFB40284A),
+              fontSize: 16
+          ),
+        ),
+      ),
     );
   }
 }
