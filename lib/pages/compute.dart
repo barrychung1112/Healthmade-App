@@ -24,8 +24,8 @@ class Compute extends StatelessWidget {
     };
     double new_high=height*0.01;
     double count=new_high*new_high;
-    var bmi=weight/count;
-    var bmr=13.397*weight+4.799*height-5.677*age+88.362;
+    var bmi=(weight/count).toStringAsFixed(2);
+    var bmr=(13.397*weight+4.799*height-5.677*age+88.362).toStringAsFixed(2);
     return Scaffold(
       appBar: AppBar(
         title: Text('$name 這是你的每日營養參考'),
@@ -39,9 +39,33 @@ class Compute extends StatelessWidget {
               width: 400,
               height: 100,
               decoration: new BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Color(0xffFFE6D9), Color(0xffFFAD86)],
+                color: Color(0xffFFAD86)
+                ,
+                border: Border.all(
+                    color: Colors.white
                 ),
+              ),
+              child:
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('目前 BMI: ',style: TextStyle(fontSize:20)),
+                        Text('${double.parse(bmi)}',style: TextStyle(fontSize:25))
+                      ]
+                  )
+
+            ),
+            if(double.parse(bmi)>24)
+              Text('BMI過重: ${(double.parse(bmi)-24).toStringAsFixed(2)}',style: TextStyle(fontSize:15, color: Colors.red)),
+            if(double.parse(bmi)<18)
+              Text('BMI過輕: ${(18-double.parse(bmi)).toStringAsFixed(2)}',style: TextStyle(fontSize:15, color: Colors.blue)),
+            Container(
+              alignment: Alignment.center,
+              width: 400,
+              height: 80,
+              decoration: new BoxDecoration(
+                color:  Color(0xffCA8EFF)
+                ,
                 border: Border.all(
                     color: Color(0xff0D47A1)
                 ),
@@ -49,22 +73,6 @@ class Compute extends StatelessWidget {
               child:
               Text('每日應攝取熱量(Kcal)BMR: $bmr',style: TextStyle(fontSize:20)),
             ),
-            Container(
-              alignment: Alignment.center,
-              width: 400,
-              height: 80,
-              decoration: new BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Color(0xffF1E1FF), Color(0xffCA8EFF), Colors.deepPurpleAccent],
-                ),
-                border: Border.all(
-                    color: Color(0xff0D47A1)
-                ),
-              ),
-              child:
-              Text('目前 BMI: $bmi',style: TextStyle(fontSize:20)),
-            ),
-
             Container(
                 child: PieChart(dataMap: dataMap),
             ),
