@@ -49,6 +49,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => MyApp()));
+
             },
             elevation: 0,
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

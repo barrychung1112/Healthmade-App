@@ -7,6 +7,7 @@ class LoginPage2 extends StatelessWidget {
   final TextEditingController _controllerr = new TextEditingController();
   final TextEditingController _controllerrr = new TextEditingController();
   final TextEditingController _controllerrrr = new TextEditingController();
+  final TextEditingController _controllersex = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +69,18 @@ class LoginPage2 extends StatelessWidget {
                 controller: _controllerrr,
               ),
             ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  //suffixIcon: Icon(Icons.remove_red_eye),
+                  labelText: "性別",
+                  hintText: "請輸入性別",
+                ),
+                controller: _controllersex,
+              ),
+            ),
             SizedBox(
               height: 40.0,
             ),
@@ -77,7 +90,7 @@ class LoginPage2 extends StatelessWidget {
               child: RaisedButton(
                 child: Text("計算一日所需",style: TextStyle(fontSize: 25,color: Colors.blue),),
                 onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Compute(_controllerrrr.text, _controller.text, _controllerr.text, _controllerrr.text)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Compute(_controllerrrr.text, int.parse(_controller.text), int.parse(_controllerr.text), int.parse(_controllerrr.text))));
                 },
               ),
             ),
