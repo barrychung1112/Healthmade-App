@@ -34,7 +34,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('食物日記拍照介面'),
+        title: Text('食物日記拍照頁面'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -46,13 +46,16 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                 child: Column(
                   children: <Widget>[
                     TextField(
-                      decoration: InputDecoration(labelText: '食物名稱'),
+                      decoration: InputDecoration(labelText: '餐點名稱'),
                       controller: _titleController,
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     ImageInput(_selectImage),
+                    SizedBox(
+                      height: 10,
+                    ),
                   ],
                 ),
               ),

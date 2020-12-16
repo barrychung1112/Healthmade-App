@@ -6,12 +6,12 @@ import './models/meal.dart';
 const DUMMY_CATEGORIES = const [
   Category(
     id: 'c1',
-    title: '義式料理',
-    color: Colors.purple,
+    title: '地中海料理',
+    color: Colors.grey,
   ),
   Category(
     id: 'c2',
-    title: '快速上菜',
+    title: '迅速完成',
     color: Colors.red,
   ),
   Category(
@@ -26,7 +26,7 @@ const DUMMY_CATEGORIES = const [
   ),
   Category(
     id: 'c5',
-    title: '輕食',
+    title: '早午輕食',
     color: Colors.blue,
   ),
   Category(
@@ -36,13 +36,13 @@ const DUMMY_CATEGORIES = const [
   ),
   Category(
     id: 'c7',
-    title: '早餐選擇',
-    color: Colors.lightBlue,
+    title: '台式早餐',
+    color: Colors.yellow,
   ),
   Category(
     id: 'c8',
     title: '亞洲料理',
-    color: Colors.lightGreen,
+    color: Colors.brown,
   ),
   Category(
     id: 'c9',
@@ -51,8 +51,8 @@ const DUMMY_CATEGORIES = const [
   ),
   Category(
     id: 'c10',
-    title: '清涼一夏',
-    color: Colors.teal,
+    title: '夏天必會',
+    color: Colors.blue,
   ),
 ];
 
@@ -63,28 +63,27 @@ const DUMMY_MEALS = const [
       'c1',
       'c2',
     ],
-    title: 'Spaghetti with Tomato Sauce',
+    title: '地中海風味彩椒鑲菠菜義大利麵',
     affordability: Affordability.Affordable,
     complexity: Complexity.Simple,
     imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
-    duration: 20,
+        'https://imageproxy.icook.network/resize?height=900&nocrop=false&stripmeta=true&type=auto&url=http%3A%2F%2Ftokyo-kitchen.icook.tw.s3.amazonaws.com%2Fuploads%2Frecipe%2Fcover%2F337138%2F25e392e1d5da16c6.jpg&width=1200',
+    duration: 25,
     ingredients: [
-      '4 Tomatoes',
-      '1 Tablespoon of Olive Oil',
-      '1 Onion',
-      '250g Spaghetti',
-      'Spices',
-      'Cheese (optional)'
+      '乳酪絲 10克',
+      '洋蔥 20克',
+      '玉米粒 10克',
+      '紅蘿蔔 半根',
+      '香料',
+      '甜椒 2粒'
     ],
     steps: [
-      'Cut the tomatoes and the onion into small pieces.',
-      'Boil some water - add salt to it once it boils.',
-      'Put the spaghetti into the boiling water - they should be done in about 10 to 12 minutes.',
-      'In the meantime, heaten up some olive oil and add the cut onion.',
-      'After 2 minutes, add the tomato pieces, salt, pepper and your other spices.',
-      'The sauce will be done once the spaghetti are.',
-      'Feel free to add some cheese on top of the finished dish.'
+      '準備好所需食材',
+      '冷凍庫取出急凍熟菠菜義大利麵（免解凍），滾水覆熱，待麵體散開瀝乾，即可起鍋備用',
+      '將紅、黃甜椒（大）洗淨從頂部切開去籽，放入滾水燙30-60秒取出備用',
+      '熱油鍋，依序加入切丁的紅、黃甜椒（小）、洋蔥、紅蘿蔔、美白菇及玉米粒炒勻，再加鹽、黑胡椒、茴香等香料調味',
+      '將急凍熟菠菜義大利麵與炒好的餡料鑲入甜椒內，放入烤箱烤10分鐘',
+      '取出撒上乳酪絲再烤一分鐘，即完成',
     ],
     isGlutenFree: false,
     isVegan: true,
@@ -96,7 +95,7 @@ const DUMMY_MEALS = const [
     categories: [
       'c2',
     ],
-    title: 'Toast Hawaii',
+    title: '夏威夷吐司',
     affordability: Affordability.Affordable,
     complexity: Complexity.Simple,
     imageUrl:
@@ -163,14 +162,14 @@ const DUMMY_MEALS = const [
         'https://cdn.pixabay.com/photo/2018/03/31/19/29/schnitzel-3279045_1280.jpg',
     duration: 60,
     ingredients: [
-      '8 Veal Cutlets',
-      '4 Eggs',
-      '200g Bread Crumbs',
-      '100g Flour',
-      '300ml Butter',
-      '100g Vegetable Oil',
-      'Salt',
-      'Lemon Slices'
+      '8塊牛小排',
+      '4顆蛋',
+      '200克麵包粉',
+      '100克麵粉',
+      '300公克奶油',
+      '100克植物油',
+      '鹽巴',
+      '檸檬汁'
     ],
     steps: [
       'Tenderize the veal to about 2–4mm, and salt on both sides.',
@@ -263,26 +262,21 @@ const DUMMY_MEALS = const [
     categories: [
       'c7',
     ],
-    title: 'Pancakes',
+    title: '蔥抓餅',
     affordability: Affordability.Affordable,
     complexity: Complexity.Simple,
     imageUrl:
-        'https://cdn.pixabay.com/photo/2018/07/10/21/23/pancake-3529653_1280.jpg',
-    duration: 20,
+        'https://tshop.r10s.com/6dd/213/0dc2/ed58/7154/6c13/a29e/1149e8b15854ab3a294904.jpg?_ex=460x460',
+    duration: 10,
     ingredients: [
-      '1 1/2 Cups all-purpose Flour',
-      '3 1/2 Teaspoons Baking Powder',
-      '1 Teaspoon Salt',
-      '1 Tablespoon White Sugar',
-      '1 1/4 cups Milk',
-      '1 Egg',
-      '3 Tablespoons Butter, melted',
+      '蔥油餅皮一張',
+      '蛋一顆',
+      '起司一片(可有可無)'
     ],
     steps: [
-      'In a large bowl, sift together the flour, baking powder, salt and sugar.',
-      'Make a well in the center and pour in the milk, egg and melted butter; mix until smooth.',
-      'Heat a lightly oiled griddle or frying pan over medium high heat.',
-      'Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake. Brown on both sides and serve hot.'
+      '小火至油熱',
+      '中火煎至焦脆',
+      '後加入蛋將餅皮蓋上',
     ],
     isGlutenFree: true,
     isVegan: false,
@@ -294,28 +288,20 @@ const DUMMY_MEALS = const [
     categories: [
       'c8',
     ],
-    title: 'Creamy Indian Chicken Curry',
+    title: '番茄炒地瓜葉',
     affordability: Affordability.Pricey,
-    complexity: Complexity.Challenging,
+    complexity: Complexity.Simple,
     imageUrl:
-        'https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg',
+        'https://tokyo-kitchen.icook.network/uploads/recipe/cover/357693/569788b72469aa18.jpg',
     duration: 35,
     ingredients: [
-      '4 Chicken Breasts',
-      '1 Onion',
-      '2 Cloves of Garlic',
-      '1 Piece of Ginger',
-      '4 Tablespoons Almonds',
-      '1 Teaspoon Cayenne Pepper',
-      '500ml Coconut Milk',
+      '一把地瓜葉',
+      '1顆番茄',
+      '1顆蒜頭',
     ],
     steps: [
-      'Slice and fry the chicken breast',
-      'Process onion, garlic and ginger into paste and sauté everything',
-      'Add spices and stir fry',
-      'Add chicken breast + 250ml of water and cook everything for 10 minutes',
-      'Add coconut milk',
-      'Serve with rice'
+      '先炒番茄',
+      '再炒地瓜葉後爆香蒜頭',
     ],
     isGlutenFree: true,
     isVegan: false,

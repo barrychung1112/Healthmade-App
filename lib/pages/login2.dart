@@ -90,7 +90,7 @@ class LoginPage2 extends StatelessWidget {
               child: RaisedButton(
                 child: Text("計算一日所需",style: TextStyle(fontSize: 25,color: Colors.blue),),
                 onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Compute(_controllerrrr.text, int.parse(_controller.text), int.parse(_controllerr.text), int.parse(_controllerrr.text))));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Compute(_controllerrrr.text, int.parse(_controller.text), int.parse(_controllerr.text), int.parse(_controllerrr.text))));
                 },
               ),
             ),

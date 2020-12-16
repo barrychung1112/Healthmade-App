@@ -7,7 +7,7 @@ import 'package:curl/curl.dart';
 import 'package:http/http.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
+import '../Cameramain.dart';
 class Compute extends StatelessWidget {
   final String name;
   final int weight;
@@ -35,24 +35,24 @@ class Compute extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              alignment: Alignment.center,
-              width: 400,
-              height: 100,
-              decoration: new BoxDecoration(
-                color: Color(0xffFFAD86)
-                ,
-                border: Border.all(
-                    color: Colors.white
+                alignment: Alignment.center,
+                width: 400,
+                height: 100,
+                decoration: new BoxDecoration(
+                  color: Color(0xffFFAD86)
+                  ,
+                  border: Border.all(
+                      color: Colors.white
+                  ),
                 ),
-              ),
-              child:
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text('目前 BMI: ',style: TextStyle(fontSize:20)),
-                        Text('${double.parse(bmi)}',style: TextStyle(fontSize:25))
-                      ]
-                  )
+                child:
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('目前 BMI: ',style: TextStyle(fontSize:20)),
+                      Text('${double.parse(bmi)}',style: TextStyle(fontSize:25))
+                    ]
+                )
 
             ),
             if(double.parse(bmi)>24)
@@ -74,35 +74,35 @@ class Compute extends StatelessWidget {
               Text('每日應攝取熱量(Kcal)BMR: $bmr',style: TextStyle(fontSize:20)),
             ),
             Container(
-                child: PieChart(dataMap: dataMap),
+              child: PieChart(dataMap: dataMap),
             ),
             Container(
-              child:
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-              new CircularPercentIndicator(
-              radius: 70.0, //大小
-                lineWidth: 5.0,//指示線條大小
-                percent: 0.6,//當前進度
-                center: new Text("本日熱量"),//中心widget 可以是文字 或其他widget 如何icon
-                progressColor: Colors.deepOrange, //進度條顏色
-              ),
-                  new CircularPercentIndicator(
-                    radius: 70.0, //大小
-                    lineWidth: 5.0,//指示線條大小
-                    percent: 0.8,//當前進度
-                    center: new Text("蛋白質"),//中心widget 可以是文字 或其他widget 如何icon
-                    progressColor: Colors.deepOrange, //進度條顏色
-                  ),
-                  new CircularPercentIndicator(
-                    radius: 70.0, //大小
-                    lineWidth: 5.0,//指示線條大小
-                    percent: 0.4,//當前進度
-                    center: new Text("碳水"),//中心widget 可以是文字 或其他widget 如何icon
-                    progressColor: Colors.deepOrange, //進度條顏色
-                  )],
-              )
+                child:
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new CircularPercentIndicator(
+                      radius: 70.0, //大小
+                      lineWidth: 5.0,//指示線條大小
+                      percent: 0.6,//當前進度
+                      center: new Text("本日熱量"),//中心widget 可以是文字 或其他widget 如何icon
+                      progressColor: Colors.deepOrange, //進度條顏色
+                    ),
+                    new CircularPercentIndicator(
+                      radius: 70.0, //大小
+                      lineWidth: 5.0,//指示線條大小
+                      percent: 0.8,//當前進度
+                      center: new Text("蛋白質"),//中心widget 可以是文字 或其他widget 如何icon
+                      progressColor: Colors.deepOrange, //進度條顏色
+                    ),
+                    new CircularPercentIndicator(
+                      radius: 70.0, //大小
+                      lineWidth: 5.0,//指示線條大小
+                      percent: 0.4,//當前進度
+                      center: new Text("碳水"),//中心widget 可以是文字 或其他widget 如何icon
+                      progressColor: Colors.deepOrange, //進度條顏色
+                    )],
+                )
             ),
             SizedBox(
               height: 52.0,
@@ -114,12 +114,12 @@ class Compute extends StatelessWidget {
                 child: Text("Login"),
                 onPressed: () {
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AddPlaceScreen()));},
-    ),
-    ),
-    ],
-    ),
-    ),
+                      MaterialPageRoute(builder: (context) => Cameramain()));},
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
