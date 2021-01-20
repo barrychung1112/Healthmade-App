@@ -30,11 +30,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
   }
 
   Widget _buildSwitchListTile(
-    String title,
-    String description,
-    bool currentValue,
-    Function updateValue,
-  ) {
+      String title,
+      String description,
+      bool currentValue,
+      Function updateValue,
+      ) {
     return SwitchListTile(
       title: Text(title),
       value: currentValue,
@@ -49,7 +49,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Filters'),
+        title: Text('選擇你的喜好'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.save),
@@ -71,7 +71,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
           Container(
             padding: EdgeInsets.all(20),
             child: Text(
-              'Adjust your meal selection.',
+              '將根據您的喜好，推薦給您餐點',
               style: Theme.of(context).textTheme.title,
             ),
           ),
@@ -79,48 +79,48 @@ class _FiltersScreenState extends State<FiltersScreen> {
             child: ListView(
               children: <Widget>[
                 _buildSwitchListTile(
-                  'Gluten-free',
-                  'Only include gluten-free meals.',
+                  '麩質',
+                  '是否有麩質過敏問題',
                   _glutenFree,
-                  (newValue) {
+                      (newValue) {
                     setState(
-                      () {
+                          () {
                         _glutenFree = newValue;
                       },
                     );
                   },
                 ),
                 _buildSwitchListTile(
-                  'Lactose-free',
-                  'Only include lactose-free meals.',
-                  _lactoseFree,
-                  (newValue) {
-                    setState(
-                      () {
-                        _lactoseFree = newValue;
-                      },
-                    );
-                  },
-                ),
-                _buildSwitchListTile(
-                  'Vegetarian',
-                  'Only include vegetarian meals.',
+                  '素食',
+                  '供素食者使用',
                   _vegetarian,
-                  (newValue) {
+                      (newValue) {
                     setState(
-                      () {
+                          () {
                         _vegetarian = newValue;
                       },
                     );
                   },
                 ),
                 _buildSwitchListTile(
-                  'Vegan',
-                  'Only include vegan meals.',
-                  _vegan,
-                  (newValue) {
+                  '增肌期',
+                  '提供給您增肌所需餐點',
+                  _vegetarian,
+                      (newValue) {
                     setState(
-                      () {
+                          () {
+                        _vegetarian = newValue;
+                      },
+                    );
+                  },
+                ),
+                _buildSwitchListTile(
+                  '減脂期',
+                  '減脂中應攝取之餐點',
+                  _vegan,
+                      (newValue) {
+                    setState(
+                          () {
                         _vegan = newValue;
                       },
                     );

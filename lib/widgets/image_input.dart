@@ -95,7 +95,7 @@ class _ImageInputState extends State<ImageInput> {
       print(' ');
       final String ProductName = responseMap['results'][0]['items'][1]['name'];
       //    final double Calories = responseMap['results'][0]['items'][1]['nutrition']['calories'];
-      final double calories = responseMap['results'][0]['items'][1]['nutrition']['calories'];
+      final int calories = responseMap['results'][0]['items'][1]['nutrition']['calories'];
       final double totalCarbs = responseMap['results'][0]['items'][1]['nutrition']['totalCarbs'];
       final double totalFat = responseMap['results'][0]['items'][1]['nutrition']['totalFat'];
       final double protein = responseMap['results'][0]['items'][1]['nutrition']['protein'];

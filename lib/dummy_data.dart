@@ -67,8 +67,15 @@ const DUMMY_MEALS = const [
     affordability: Affordability.Affordable,
     complexity: Complexity.Simple,
     imageUrl:
-        'https://imageproxy.icook.network/resize?height=900&nocrop=false&stripmeta=true&type=auto&url=http%3A%2F%2Ftokyo-kitchen.icook.tw.s3.amazonaws.com%2Fuploads%2Frecipe%2Fcover%2F337138%2F25e392e1d5da16c6.jpg&width=1200',
+    'https://imageproxy.icook.network/resize?height=900&nocrop=false&stripmeta=true&type=auto&url=http%3A%2F%2Ftokyo-kitchen.icook.tw.s3.amazonaws.com%2Fuploads%2Frecipe%2Fcover%2F337138%2F25e392e1d5da16c6.jpg&width=1200',
     duration: 25,
+    Nutrient:[
+      '單位 : 一份',
+      '熱量 : 435卡',
+      '蛋白質 : 15克',
+      '脂肪 : 23克',
+      '纖維素 : 270'
+    ],
     ingredients: [
       '乳酪絲 10克',
       '洋蔥 20克',
@@ -99,14 +106,20 @@ const DUMMY_MEALS = const [
     affordability: Affordability.Affordable,
     complexity: Complexity.Simple,
     imageUrl:
-        'https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg',
+    'https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg',
     duration: 10,
+    Nutrient:[
+      '單位 : 一份',
+      '熱量 : 250卡',
+      '蛋白質 : 5克',
+      '脂肪 : 10克',
+    ],
     ingredients: [
-      '1 Slice White Bread',
-      '1 Slice Ham',
-      '1 Slice Pineapple',
-      '1-2 Slices of Cheese',
-      'Butter'
+      '2 片麵包',
+      '1 片火腿',
+      '2 片鳳梨',
+      '1-2 片起司',
+      '奶油適量'
     ],
     steps: [
       'Butter one side of the white bread',
@@ -128,8 +141,15 @@ const DUMMY_MEALS = const [
     affordability: Affordability.Pricey,
     complexity: Complexity.Simple,
     imageUrl:
-        'https://imgs.gvm.com.tw/upload/gallery/health/62363_01.jpg',
+    'https://imgs.gvm.com.tw/upload/gallery/health/62363_01.jpg',
     duration: 45,
+    Nutrient:[
+      '單位 : 一份',
+      '熱量 : 100卡',
+      '蛋白質 : 5克',
+      '脂肪 : 3克',
+      '纖維素 : 200'
+    ],
     ingredients: [
       '300克萵苣',
       '1顆大番茄',
@@ -159,8 +179,14 @@ const DUMMY_MEALS = const [
     affordability: Affordability.Luxurious,
     complexity: Complexity.Challenging,
     imageUrl:
-        'https://cdn.pixabay.com/photo/2018/03/31/19/29/schnitzel-3279045_1280.jpg',
+    'https://cdn.pixabay.com/photo/2018/03/31/19/29/schnitzel-3279045_1280.jpg',
     duration: 60,
+    Nutrient:[
+      '單位 : 一份',
+      '熱量 : 800卡',
+      '蛋白質 : 70克',
+      '脂肪 : 200克',
+    ],
     ingredients: [
       '8塊牛小排',
       '4顆蛋',
@@ -188,16 +214,22 @@ const DUMMY_MEALS = const [
   Meal(
     id: 'm5',
     categories: [
-      'c2'
-          'c5',
+      'c2',
+      'c5',
       'c10',
     ],
     title: 'Salad with Smoked Salmon',
     affordability: Affordability.Luxurious,
     complexity: Complexity.Simple,
     imageUrl:
-        'https://cdn.pixabay.com/photo/2016/10/25/13/29/smoked-salmon-salad-1768890_1280.jpg',
+    'https://cdn.pixabay.com/photo/2016/10/25/13/29/smoked-salmon-salad-1768890_1280.jpg',
     duration: 15,
+    Nutrient:[
+      '單位 : 一份',
+      '熱量 : 500卡',
+      '蛋白質 : 25克',
+      '脂肪 : 10克',
+    ],
     ingredients: [
       'Arugula',
       'Lamb\'s Lettuce',
@@ -231,7 +263,7 @@ const DUMMY_MEALS = const [
     affordability: Affordability.Affordable,
     complexity: Complexity.Hard,
     imageUrl:
-        'https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg',
+    'https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg',
     duration: 240,
     ingredients: [
       '4 Sheets of Gelatine',
@@ -266,8 +298,14 @@ const DUMMY_MEALS = const [
     affordability: Affordability.Affordable,
     complexity: Complexity.Simple,
     imageUrl:
-        'https://tshop.r10s.com/6dd/213/0dc2/ed58/7154/6c13/a29e/1149e8b15854ab3a294904.jpg?_ex=460x460',
+    'https://tshop.r10s.com/6dd/213/0dc2/ed58/7154/6c13/a29e/1149e8b15854ab3a294904.jpg?_ex=460x460',
     duration: 10,
+    Nutrient:[
+      '單位 : 一份',
+      '熱量 : 300卡',
+      '蛋白質 : 5克',
+      '脂肪 : 10克',
+    ],
     ingredients: [
       '蔥油餅皮一張',
       '蛋一顆',
@@ -292,8 +330,15 @@ const DUMMY_MEALS = const [
     affordability: Affordability.Pricey,
     complexity: Complexity.Simple,
     imageUrl:
-        'https://tokyo-kitchen.icook.network/uploads/recipe/cover/357693/569788b72469aa18.jpg',
+    'https://tokyo-kitchen.icook.network/uploads/recipe/cover/357693/569788b72469aa18.jpg',
     duration: 35,
+    Nutrient:[
+      '單位 : 一份',
+      '熱量 : 100卡',
+      '蛋白質 : 5克',
+      '脂肪 : 10克',
+      '纖維素 : 200'
+    ],
     ingredients: [
       '一把地瓜葉',
       '1顆番茄',
@@ -317,7 +362,7 @@ const DUMMY_MEALS = const [
     affordability: Affordability.Affordable,
     complexity: Complexity.Hard,
     imageUrl:
-        'https://cdn.pixabay.com/photo/2014/08/07/21/07/souffle-412785_1280.jpg',
+    'https://cdn.pixabay.com/photo/2014/08/07/21/07/souffle-412785_1280.jpg',
     duration: 45,
     ingredients: [
       '1 Teaspoon melted Butter',
@@ -368,7 +413,7 @@ const DUMMY_MEALS = const [
     affordability: Affordability.Luxurious,
     complexity: Complexity.Simple,
     imageUrl:
-        'https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg',
+    'https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg',
     duration: 30,
     ingredients: [
       'White and Green Asparagus',

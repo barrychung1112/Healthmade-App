@@ -19,6 +19,7 @@ class Meal {
   final String imageUrl;
   final List<String> ingredients;
   final List<String> steps;
+  final List<String> Nutrient;
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
@@ -32,6 +33,7 @@ class Meal {
     @required this.categories,
     @required this.title,
     @required this.imageUrl,
+    @required this.Nutrient,
     @required this.ingredients,
     @required this.steps,
     @required this.duration,
